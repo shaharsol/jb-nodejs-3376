@@ -3,6 +3,7 @@
     "axios": "^1.6.7"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0"
+    "@types/axios": "^0.14.0",
+    "ts-node": "^10.9.2"
   }
 }
