@@ -1,10 +1,10 @@
 {
   "dependencies": {
     "config": "^3.3.11",
-    "mysql2": "^3.9.2"
+    "mongoose": "^8.2.0"
   },
   "devDependencies": {
     "@types/config": "^3.3.3",
-    "@types/node": "^20.11.20"
+    "@types/mongoose": "^5.11.97"
   }
 }
