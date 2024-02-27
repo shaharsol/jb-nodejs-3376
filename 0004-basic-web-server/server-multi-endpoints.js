@@ -1,0 +1,24 @@
+const { createServer } = require('http');
+
+const PORT = '8080';
+
+const requestListener = function (req, res) {
+    if (req.url === '/name') {
+        res.writeHead(200);
+        return res.end("name endpoint");
+    }
+
+    if (req.url === '/age') {
+        res.writeHead(200);
+        return res.end("age endpoint");
+    }
+
+    res.writeHead(404);
+    return res.end("not found");
+};
+
+const server = createServer(requestListener);
+
+server.listen(PORT, () => {
+    console.log(`Server is running on http://${HOST}:${PORT}`);
+});
