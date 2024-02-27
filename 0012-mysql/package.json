@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "config": "^3.3.11",
+    "mysql2": "^3.9.2"
+  },
+  "devDependencies": {
+    "@types/config": "^3.3.3"
+  }
+}
