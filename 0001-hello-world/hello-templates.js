@@ -1,0 +1,1 @@
+ console.log(`hello ${process.env[process.argv[2]]}`);
