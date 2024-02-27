@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "ES6",
         "outDir": "dist",
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "moduleResolution": "Node",
     }
 }
