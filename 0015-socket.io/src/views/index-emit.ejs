@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script>
+      var socket = io();
+      socket.on('new user joined', function(msg) {
+        document.getElementById('main').innerHTML += ' ' + msg.id;
+      });
+    </script>
+  </head>
+  <body>
+      <p id="main">
+          hello socket.io
+      </p>
+  </body>
+</html>
+
+
+
+
