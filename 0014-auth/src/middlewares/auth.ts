@@ -12,6 +12,13 @@ const database = [
     }
 ]
 
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
 
 passport.use(new Strategy({
         usernameField: 'email',
@@ -21,7 +28,9 @@ passport.use(new Strategy({
         try {
             // try to fetch the user from the database
             // according to the user input
-            const user = database.find(record => record.email === email && record. password === password);
+            const user = database.find(record => 
+                record.email === email && 
+                record. password === password);
 
             // if we didn't find a user in the database, inform Passport about it
             if (!user) {
@@ -36,14 +45,6 @@ passport.use(new Strategy({
         }
     }
 ));
-
-passport.serializeUser((user, done) => {
-    done(null, user);
-});
-
-passport.deserializeUser((user, done) => {
-    done(null, user);
-});
 
 export default passport;
   
