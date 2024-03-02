@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>here is a rendered table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>role</th>
+                <th>pic</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% bandMembers.forEach(bandMember => { %>
+                <tr>
+                    <td><%= bandMember.name %></td>
+                    <td><%= bandMember.role %></td>
+                    <td><img src="<%= bandMember.pic %>"/></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
