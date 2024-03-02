@@ -10,12 +10,10 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_TCP_PORT: 3306
     ports:
-    - 3306:3306
+    - 3312:3306
     expose:
       - 3306
     restart: unless-stopped
-    volumes:
-      - db:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
@@ -34,6 +32,4 @@ services:
       - DB_PORT=3306
     stdin_open: true
     tty: true
-
-volumes: 
-  db:
+    
