@@ -1,0 +1,7 @@
+{
+    "app": {
+        "name": "my default app env",
+        "secret": "not really a secret",
+        "port": 8080
+    }
+}
