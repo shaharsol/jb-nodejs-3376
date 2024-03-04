@@ -1,6 +1,8 @@
 const express = require('express');
 
 const server = express();
+const csvRouter = express.Router();
+server.use('/csv/', csvRouter)
 
 
 const convertJsonToCsv = (req, res, next) => {
@@ -28,11 +30,12 @@ server.use((req, res, next) => {
     next()
 })
 
-server.patch('/csv', notAllowed)
-server.put('/csv', notAllowed)
-server.delete('/csv', notAllowed)
 
-server.use('/csv', (req, res, next) => {
+csvRouter.patch('/', notAllowed)
+csvRouter.put('/', notAllowed)
+csvRouter.delete('/', notAllowed)
+
+csvRouter.use((req, res, next) => {
     // connect to mongo
     const isConnected = true;
     if(!isConnected) res.status(500).send('could not connect to mongo')
@@ -40,14 +43,14 @@ server.use('/csv', (req, res, next) => {
     next()
 })
 
-server.get('/csv', (req, res, next) => {
+csvRouter.get('/', (req, res, next) => {
     res.on('finish', () => {
         console.log('response finished, disconnecting from mongo')
     })
     next()
 })
 
-server.get('/csv', convertJsonToCsv, logCsvLength, (req, res, next) => {
+csvRouter.get('/', convertJsonToCsv, logCsvLength, (req, res, next) => {
     console.log('in csv GET')
     res.status(200).send(req.csv)
     console.log('response sent')
@@ -55,18 +58,18 @@ server.get('/csv', convertJsonToCsv, logCsvLength, (req, res, next) => {
     // next()
 })
 
-server.post('/csv', (req, res, next) => {
+csvRouter.post('/', (req, res, next) => {
     console.log('in csv POST')
     // next()
 })
 
-// server.use('/csv', (req, res, next) => {
+// csvRouter.use((req, res, next) => {
 //     // disconnect from mongo
 //     console.log('disconnected from mongo')
 // })
 
-
 server.get('/json', (req, res, next) => {
+    // extract 234 out of req
     console.log('in json GET')
 })
 
@@ -74,6 +77,9 @@ server.post('/json', (req, res, next) => {
     console.log('in json POST')
 })
 
+server.use((req, res, next) => {
+    res.status(404).send('not found')
+})
 
 server.listen(8080, () => {
     console.log('started...')
