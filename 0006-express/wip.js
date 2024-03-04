@@ -3,7 +3,8 @@ const express = require('express');
 const server = express();
 const csvRouter = express.Router();
 server.use('/csv/', csvRouter)
-
+server.use(express.json())
+csvRouter.use(express.urlencoded())
 
 const convertJsonToCsv = (req, res, next) => {
     // convert json to csv
@@ -88,7 +89,8 @@ server.post('/json', (req, res, next) => {
     console.log('in json POST')
 })
 
-server.post('/comment', (req, res, next) => {
+server.post('/comment', express.urlencoded(), (req, res, next) => {
+    // what's in the POST body????
     console.log('in comment POST')
 })
 
