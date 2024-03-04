@@ -70,11 +70,26 @@ csvRouter.post('/', (req, res, next) => {
 
 server.get('/json', (req, res, next) => {
     // extract 234 out of req
-    console.log('in json GET')
+    console.log(`in json GET. got id ${req.query.id}`)
 })
+
+server.get('/json/yossi/something/moti', (req, res, next) => {
+    // extract 234 out of req
+    console.log(`in special route`)
+})
+
+server.get('/json/:id/something/:otherId', (req, res, next) => {
+    // extract 234 out of req
+    console.log(`in json GET. got id ${req.params.id}, go otherid: ${req.params.otherId} and name is ${req.query.name}`)
+})
+
 
 server.post('/json', (req, res, next) => {
     console.log('in json POST')
+})
+
+server.post('/comment', (req, res, next) => {
+    console.log('in comment POST')
 })
 
 server.use((req, res, next) => {
