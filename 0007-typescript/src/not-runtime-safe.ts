@@ -1,4 +1,5 @@
 import axios from 'axios';
+// const axios = require('axios')
 
 interface Product {
     id: number,

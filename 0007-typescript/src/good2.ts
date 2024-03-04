@@ -1,7 +1,11 @@
-function sum (a, b) {
+function sum (a: number, b: number) {
     return a + b;
 }
 
-sum = 'a';
+function concat (a: string, b: string) {
+    return a + b;
+}
+
+// sum = 'a';
 
 console.log(sum(1, 2));

@@ -27,4 +27,9 @@ const auth = (req, res, next) => {
 
 }
 
-module.exports = auth;
+const CONSTANT = 1;
+
+module.exports = {
+    auth,
+    CONSTANT
+}

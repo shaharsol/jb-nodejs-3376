@@ -1,6 +1,6 @@
-let x = 1;
-let y = 2;
+let x: number = 1;
+let y: number = 2;
 
-x = '1';
+// x = '1';
 
 console.log( x + y );

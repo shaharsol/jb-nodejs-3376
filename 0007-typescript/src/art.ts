@@ -1,4 +1,4 @@
-import Employee, { getPersonName } from './vandalay';
+import Employee, { getPersonName, Product as Yosi } from './vandalay';
 
 const employee: Employee = {
     id: 1,

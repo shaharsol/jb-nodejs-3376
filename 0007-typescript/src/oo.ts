@@ -6,7 +6,8 @@ interface publicActions {
 
 abstract class Implementation implements publicActions{
 
-    public constructor(public someMember: string) {}
+    public constructor(public someMember: string, private aPriavteNumber: number) {
+    }
 
     sum(a: number, b: number): number {
         return a + b;
@@ -15,6 +16,7 @@ abstract class Implementation implements publicActions{
         console.log( message + this.someMember);
     }
     returnFunction(): Function {
+        const x = this.aPriavteNumber;
         return () => {}
     }
 
@@ -27,4 +29,4 @@ class ActualImplementation extends Implementation {
     }
 }
 
-const instance = new ActualImplementation('hello world');
+const instance = new ActualImplementation('hello world', 8);

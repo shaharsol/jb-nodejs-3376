@@ -4,5 +4,6 @@
         "outDir": "dist",
         "noEmitOnError": true,
         "moduleResolution": "Node",
+        "module": "CommonJS"
     }
 }
