@@ -1,7 +1,7 @@
-const promisify = (fun) => {
+const promisify = (func) => {
     return async (...args) => {
         return new Promise((resolve, reject) => {
-            fun(...args, (err, data) => {
+            func(...args, (err, data) => {
                 if (err) {
                     return reject(err);
                 }
