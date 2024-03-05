@@ -7,4 +7,6 @@ const server = express();
 server.use('/basic-router', basicRouter);
 server.use('/router-with-middlewares', routerWithMiddlewares);
 
-server.listen(8080);
+server.listen(8080, () => {
+    console.log('started...')
+});

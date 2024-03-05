@@ -1,0 +1,23 @@
+{
+    "version": "1.0.0",
+    "configurations": [
+      {
+        "name": "TS-Node",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node",
+        "runtimeArgs": [
+          "--files", // <-- Add this line
+          "--transpile-only",
+          "--project",
+          "${workspaceRoot}/tsconfig.json" // <-- Add this line
+        ],
+        "args": ["${relativeFile}"], // <-- Change this line
+        "cwd": "${workspaceRoot}",
+        "internalConsoleOptions": "openOnSessionStart",
+        "skipFiles": ["<node_internals>/*", "node_modules/*"]
+      }
+    ]
+
+  }
+  
