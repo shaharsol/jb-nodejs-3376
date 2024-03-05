@@ -3,9 +3,10 @@ import util from 'util';
 
 const pool = mysql.createPool({
   host: "localhost",
-  user: "username",
-  password: "password",
+  user: "root",
+  password: "",
   database: 'mydb',
+  port: 3310,
   waitForConnections: true,
   connectionLimit: 10,
   maxIdle: 10,
@@ -17,10 +18,10 @@ const query = util.promisify(pool.query).bind(pool);
 
 (async () => {
   try {
-    const result2 = await pool.execute(`
+    const result2 = await query(`
       select * from users where id = ?;
     `, [
-      6
+      1
     ])
 
     console.log(result2);

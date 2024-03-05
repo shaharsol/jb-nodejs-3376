@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
   user: "root",
   password: "",
   database: 'mydb',
-  port: 3306
+  port: 3310
 });
 
 const connect = util.promisify(connection.connect).bind(connection);

@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "config": "^3.3.9"
+  },
+  "devDependencies": {
+    "@types/config": "^3.3.3"
   }
 }
