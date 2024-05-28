@@ -12,22 +12,37 @@ const howManyCandlesCallback = (dayNumber, callback) => {
     }, (Math.random() + 1) * 1000);
 };
 
-const howManyCandlesPromise = (dayNumber) => {
-    return new Promise((resolve, reject) => {
-        howManyCandlesCallback(dayNumber, (err, result) => {
-            if (err) {
-                reject(err)
-            }
-            resolve(result)
-        })
-    });
-}
+// const howManyCandlesPromise = (dayNumber) => {
+//     return new Promise((resolve, reject) => {
+//         howManyCandlesCallback(dayNumber, (err, result) => {
+//             if (err) {
+//                 reject(err)
+//             }
+//             resolve(result)
+//         })
+//     });
+// }
+
+// const work = async () => {
+//     let sum = 0;
+//     for (let i = 1; i < 9; i++) {
+//         sum += await howManyCandlesPromise(i);
+//     }
+//     console.log(sum)
+// }
+// work();
+
+const promisify = (func) => { }
+const howManyCandlesPromise = promisify(howManyCandlesCallback);
+
 
 const promises = [];
 for (let i = 1; i < 9; i++) {
     promises.push(howManyCandlesPromise(i))
 }
-Promise.all(promises).then(results => { // [2,3,4,5,6,7,8,9]
+
+(async () => {
+    const results = await Promise.all(promises);
     // let sum = 0;
     // for (let i = 0; i < results.length; i++) {
     //     sum += results[i]
@@ -35,6 +50,5 @@ Promise.all(promises).then(results => { // [2,3,4,5,6,7,8,9]
 
     const sum = results.reduce((a, b) => a + b, 0)
     console.log(sum)
-}).catch(err => {
-    console.error(err)
-})
+
+})();
