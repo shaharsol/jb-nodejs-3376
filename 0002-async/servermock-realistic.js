@@ -59,7 +59,18 @@ const howManyEmployeesPromise = (managerId, departmentId) => {
 // }
 // work();
 
-const promisify = (func) => { }
+const promisify = (func) => {
+    return (...args) => {
+        return new Promise((resolve, reject) => {
+            func(...args, (err, data) => {
+                if (err) {
+                    return reject(err)
+                }
+                resolve(data)
+            })
+        })
+    }
+}
 const howManyCandlesPromise = promisify(howManyCandlesCallback);
 
 
