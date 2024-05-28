@@ -1,1 +1,1 @@
-console.log(`hello ${process.env.NAME}`);
+console.log(`hello ${process.env.MY_NAME}`);
