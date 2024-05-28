@@ -23,8 +23,18 @@ const howManyCandlesPromise = (dayNumber) => {
     });
 }
 
-// howManyCandlesPromise(9).then(result => {
-//     console.log(result)
-// }).catch(err => {
-//     console.error(err)
-// })
+const promises = [];
+for (let i = 1; i < 9; i++) {
+    promises.push(howManyCandlesPromise(i))
+}
+Promise.all(promises).then(results => { // [2,3,4,5,6,7,8,9]
+    // let sum = 0;
+    // for (let i = 0; i < results.length; i++) {
+    //     sum += results[i]
+    // }
+
+    const sum = results.reduce((a, b) => a + b, 0)
+    console.log(sum)
+}).catch(err => {
+    console.error(err)
+})
