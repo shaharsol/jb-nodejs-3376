@@ -90,3 +90,14 @@ for (let i = 1; i < 9; i++) {
     console.log(sum)
 
 })();
+
+
+
+try {
+    const result = await myFunc();
+    console.log(result)
+} catch (err) {
+    console.error(err)
+}
+
+myFunc.then(console.log).catch(console.error)
