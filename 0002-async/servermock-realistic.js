@@ -12,6 +12,22 @@ const howManyCandlesCallback = (dayNumber, callback) => {
     }, (Math.random() + 1) * 1000);
 };
 
+const howManyEmployeesCallback = (managerId, departmentId, callback) => {
+    return setTimeout(() => {
+        if (dayNumber < 1) {
+            return callback('day cannot be smaller than 1');
+        }
+
+        if (dayNumber > 8) {
+            return callback('No Isro Chag for Hannukah!');
+        }
+
+        return callback(null, Math.floor((Math.random() + 1) * 100));
+    }, (Math.random() + 1) * 1000);
+};
+
+
+
 // const howManyCandlesPromise = (dayNumber) => {
 //     return new Promise((resolve, reject) => {
 //         howManyCandlesCallback(dayNumber, (err, result) => {
@@ -22,6 +38,17 @@ const howManyCandlesCallback = (dayNumber, callback) => {
 //         })
 //     });
 // }
+
+const howManyEmployeesPromise = (managerId, departmentId) => {
+    return new Promise((resolve, reject) => {
+        howManyEmployeesCallback(managerId, departmentId, (err, result) => {
+            if (err) {
+                reject(err)
+            }
+            resolve(result)
+        })
+    });
+}
 
 // const work = async () => {
 //     let sum = 0;
