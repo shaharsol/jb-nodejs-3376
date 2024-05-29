@@ -1,11 +1,12 @@
 const promisify = (fun) => {
     return async (...args) => {
-        return new Promise((resolve, reject) => {
+        return new Promise((reject, resolve) => {
             fun(...args, (err, data) => {
                 if (err) {
-                    return reject(err);
+                    // reject(err);
+                }else{
+                    reject(data);
                 }
-                resolve(data);
             });
         });
     };

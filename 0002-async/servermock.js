@@ -7,7 +7,7 @@ const howManyCandlesCallback = (dayNumber, callback) => {
         return callback('No Isro Chag for Hannukah!');
     }
 
-    return callback(null, dayNumber + 1);
+    callback(null, dayNumber + 1);
 }
 
 let sum = 0;
