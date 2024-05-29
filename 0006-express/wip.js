@@ -1,31 +1,16 @@
 const express = require('express');
 const app = express();
+const authMiddleware = require('./middlewares/authorization')
+const axios = require('axios')
+
+app.use(authMiddleware)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use((req, res, next) => {
-    const authError = {
-        status: 401,
-        message: 'not authorized'
-    }
-    const authHeader = req.get('authorization');
-    if (!authHeader) next(authError);
-
-    const parts = authHeader.split(' ');
-
-    if (parts.length !== 2) next(authError);
-
-    if (parts[2] !== '123') next(authError);
-
-    next()
-
-
-
-})
-
-app.get('/', (req, res) => {
-    res.send(`username is ${req.username}`)
+app.get('/', async (req, res) => {
+    const response = await axios.get('https://google.com')
+    res.send(`google content is ${response.data}`)
 })
 
 app.post('/user/', (req, res, next) => {
