@@ -36,5 +36,6 @@ function getFromDatabase<T>(id: number): T | undefined{
 }
 
 const employee = getFromDatabase<Employee>(2)
+const product = getFromDatabase<Product>(2)
 console.log(employee);
 
