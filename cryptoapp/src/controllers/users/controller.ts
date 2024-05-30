@@ -5,5 +5,5 @@ export function dashboard(req: Request, res: Response, next: NextFunction) {
 }
 
 export function addSymbol(req: Request, res: Response, next: NextFunction) {
-    res.send('added symbol...')
+    res.send(`added symbol ${req.body.symbol}`)
 }
