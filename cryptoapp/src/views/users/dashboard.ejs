@@ -12,6 +12,25 @@
         <input type="text" name="symbol" placeholder="symbol...">
         <button>Add</button>
     </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>USD Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% userSymbols.forEach(userSymbol=> { %>
+                <tr>
+                    <td>
+                        <%= userSymbol.symbol %>
+                    </td>
+                    <td></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
 
 </html>
