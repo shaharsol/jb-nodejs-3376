@@ -17,6 +17,8 @@ app.set('views', path.resolve(__dirname, 'views'))
 // middlewares
 app.use(session({
     secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
