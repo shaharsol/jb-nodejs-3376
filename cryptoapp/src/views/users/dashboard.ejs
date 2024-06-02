@@ -23,6 +23,8 @@
 </head>
 
 <body>
+    <p>hello <%= user.github_id %> | <a href="/users/logout">logout</a>
+    </p>
     <form method="POST" action="/users/symbols/add">
         <input type="text" name="symbol" placeholder="symbol...">
         <button>Add</button>
