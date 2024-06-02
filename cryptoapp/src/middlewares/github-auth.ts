@@ -3,6 +3,14 @@ import passport from "passport";
 import { Profile, Strategy } from "passport-github2";
 import getModel from "../models/user/factory";
 
+passport.serializeUser((user, done) => {
+    done(null, user);
+})
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+})
+
 passport.use(
     new Strategy({ ...config.get('github') },
         async (accessToken: string, refreshToken: string, profile: Profile, done: Function) => {
