@@ -2,10 +2,21 @@
     "app": {
         "port": 3000,
         "name": "CryptoApp",
-        "secret": ""
+        "secret": "",
+        "io": {
+            "host": "localhost",
+            "port": 3001
+        }
     },
     "worker": {
-        "interval": 30000
+        "interval": 10000,
+        "io": {
+            "host": "localhost",
+            "port": 3001
+        }
+    },
+    "io": {
+        "port": 3001
     },
     "mysql": {
         "host": "localhost",
