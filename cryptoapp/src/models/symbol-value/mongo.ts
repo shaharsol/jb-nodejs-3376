@@ -12,6 +12,10 @@ const SymbolValue = mongoose.model<DTO>('SymbolValue', schema);
 
 
 class Mongo implements Model {
+    async getLatest(symbol: string): Promise<DTO> {
+        const result: DTO[] = await SymbolValue.find({ symbol }).sort({ when: -1 }).limit(1);
+        return result[0];
+    }
     async add(symbolValue: DTO): Promise<DTO> {
         const newSymbolValue = new SymbolValue(symbolValue);
         await newSymbolValue.save();

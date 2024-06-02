@@ -1,12 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 import getModel from "../../models/user-symbol/factory";
+import getSymbolValueModel from "../../models/symbol-value/factory";
 import { DTO } from "../../models/user-symbol/dto";
 
 export async function dashboard(req: Request, res: Response, next: NextFunction) {
     try {
         const userSymbols = await getModel().getForUser(1);
+
+        const symbolValues = await Promise.all(
+            userSymbols.map(({ symbol }) => getSymbolValueModel().getLatest(symbol))
+        )
+
         res.render('users/dashboard', {
-            userSymbols
+            userSymbols,
+            symbolValues
         })
     } catch (err) {
         next(err);
