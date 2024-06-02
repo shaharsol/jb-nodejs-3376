@@ -4,11 +4,19 @@
         "name": "CryptoApp",
         "secret": ""
     },
+    "worker": {
+        "interval": 30000
+    },
     "mysql": {
         "host": "localhost",
         "port": 3310,
         "user": "root",
         "password": "",
+        "database": "cryptoapp"
+    },
+    "mongo": {
+        "host": "localhost",
+        "port": 27017,
         "database": "cryptoapp"
     }
 }

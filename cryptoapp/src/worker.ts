@@ -1,7 +1,8 @@
 import config from 'config';
 import mysql from 'mysql2';
 import { promisify } from 'util';
-import getModel from './models/user-symbol/factory';
+import getUserSymbolModel from './models/user-symbol/factory';
+import getSymbolValueModel from './models/symbol-value/factory';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
@@ -20,6 +21,14 @@ async function scrape(symbol: string): Promise<Scraped> {
     const html = response.data;
     const $ = cheerio.load(html);
     const scrapedString = $('.YMlKec.fxKbKc').text()
+
+    // update in mongo db
+    await getSymbolValueModel().add({
+        symbol,
+        value: scrapedString,
+        when: new Date()
+    })
+
     return {
         symbol,
         value: scrapedString
@@ -31,7 +40,7 @@ async function work() {
         await connect();
         console.log('connected to MySQL');
 
-        const uniqueSymbols = await getModel().getUniqueSymbols();
+        const uniqueSymbols = await getUserSymbolModel().getUniqueSymbols();
         console.log('tokens to scrape: ', uniqueSymbols)
 
         const settlements = await Promise.allSettled(
@@ -43,6 +52,8 @@ async function work() {
 
     } catch (err) {
         console.error(err)
+    } finally {
+        setTimeout(work, config.get('worker.interval'))
     }
 }
 
