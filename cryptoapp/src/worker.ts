@@ -26,11 +26,12 @@ async function scrape(symbol: string): Promise<Scraped> {
     const scrapedString = $('.YMlKec.fxKbKc').text()
 
     // update in mongo db
-    await getSymbolValueModel().add({
+    const mongoRet = await getSymbolValueModel().add({
         symbol,
         value: scrapedString,
         when: new Date()
     })
+    console.log('mongo ret', mongoRet)
 
     // notify io server, so it can notify all the clients
     socket.emit('new message from worker', {

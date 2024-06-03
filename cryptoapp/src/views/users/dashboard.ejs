@@ -17,6 +17,7 @@
         }
         */
         socket.on('symbol value update', message => {
+            console.log('received a symbol value update', message)
             document.getElementById(message.symbol).innerHTML = `$${message.value}`;
         })
     </script>

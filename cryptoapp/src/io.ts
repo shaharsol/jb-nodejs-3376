@@ -11,7 +11,9 @@ const io = new Server({
 const clients = [];
 
 io.on('connection', socket => {
+    console.log('new connection')
     socket.on('new message from worker', message => {
+        console.log('new message from worker', message)
         io.emit('symbol value update', message)
     })
 })
