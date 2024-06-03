@@ -1,0 +1,7 @@
+FROM node:18-alpine
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
+RUN npx tsc
+CMD node /app/dist/worker.js

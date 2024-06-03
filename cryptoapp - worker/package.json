@@ -1,0 +1,50 @@
+{
+    "name": "cryptoapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc && cp -r ./src/views ./dist/views",
+        "start:dev": "nodemon --exec ts-node src/app.ts",
+        "start": "node dist/initdb && node dist/app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^1.7.2",
+        "cheerio": "^1.0.0-rc.12",
+        "config": "^3.3.11",
+        "ejs": "^3.1.10",
+        "express": "^4.19.2",
+        "express-session": "^1.18.0",
+        "joi": "^17.13.1",
+        "mongoose": "^8.4.1",
+        "morgan": "^1.10.0",
+        "mysql2": "^3.9.9",
+        "passport": "^0.7.0",
+        "passport-github2": "^0.1.12",
+        "socket.io": "^4.7.5",
+        "socket.io-client": "^4.7.5",
+        "uuid": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/cheerio": "^0.22.35",
+        "@types/config": "^3.3.4",
+        "@types/ejs": "^3.1.5",
+        "@types/express": "^4.17.21",
+        "@types/express-session": "^1.18.0",
+        "@types/mongoose": "^5.11.97",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^20.12.13",
+        "@types/passport": "^1.0.16",
+        "@types/passport-github2": "^1.2.9",
+        "@types/socket.io": "^3.0.2",
+        "@types/socket.io-client": "^3.0.0",
+        "@types/uuid": "^9.0.8",
+        "nodemon": "^3.1.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "app": {
+        "secret": "MY_SECRET"
+    }
+}

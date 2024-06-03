@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"
+        integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const socket = io('ws://<%= io.host %>:<%= io.port %>')
+        /*
+        {
+            symbol: 'btc',
+            value: '37,777.09'
+        }
+        */
+        socket.on('symbol value update', message => {
+            console.log('received a symbol value update', message)
+            document.getElementById(message.symbol).innerHTML = `$${message.value}`;
+        })
+    </script>
+</head>
+
+<body>
+    <p>hello <%= user.github_id %> | <a href="/users/logout">logout</a>
+    </p>
+    <form method="POST" action="/users/symbols/add">
+        <input type="text" name="symbol" placeholder="symbol...">
+        <button>Add</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>USD Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% userSymbols.forEach(userSymbol=> { %>
+                <tr>
+                    <td>
+                        <%= userSymbol.symbol %>
+                    </td>
+                    <td id="<%= userSymbol.symbol %>">$<%= symbolValues.find(symbolValue=> symbolValue?.symbol ===
+                            userSymbol?.symbol)?.value %></td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mongo:
+    container_name: mongo-microservice
+    environment:
+      - MONGO_INITDB_DATABASE=cryptoapp
+    ports:
+      - "27017:27017"
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+  worker:
+    container_name: worker-microservice
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      - NODE_ENV=compose
+  api:
+    container_name: api-microservice
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      - NODE_ENV=compose
+    ports:
+      - "3002:3000"
+volumes:
+  mongo-data:
+
+

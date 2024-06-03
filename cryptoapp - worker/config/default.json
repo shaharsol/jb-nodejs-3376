@@ -1,0 +1,42 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "CryptoApp",
+        "secret": "",
+        "io": {
+            "host": "localhost",
+            "port": 3001
+        }
+    },
+    "worker": {
+        "interval": 10000,
+        "io": {
+            "host": "localhost",
+            "port": 3001
+        },
+        "api": {
+            "host": "host.docker.internal",
+            "port": 3000
+        }
+    },
+    "io": {
+        "port": 3001
+    },
+    "mysql": {
+        "host": "localhost",
+        "port": 3310,
+        "user": "root",
+        "password": "",
+        "database": "cryptoapp"
+    },
+    "mongo": {
+        "host": "localhost",
+        "port": 27017,
+        "database": "cryptoapp"
+    },
+    "github": {
+        "clientID": "07c52cc8f0391388de2a",
+        "clientSecret": "10eed8f67cf5e38c70d193ad06648fa552940d9a",
+        "callbackURL": "http://localhost:3000/github/callback"
+    }
+}
