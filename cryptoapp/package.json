@@ -7,7 +7,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc && cp -r ./src/views ./dist/views",
         "start:dev": "nodemon --exec ts-node src/app.ts",
-        "start": "node dist/app.js"
+        "start": "node dist/initdb && node dist/app.js"
     },
     "keywords": [],
     "author": "",

@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    name: 6156-mysql
+    ports:
+      - "3310:3306"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_DATABASE=cryptoapp
+      - MYSQL_TCP_PORT=3306
+    volumes:
+      - 6156-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+  mongo:
+    name: 6156-mongo
+    environment:
+      - MONGO_INITDB_DATABASE=cryptoapp
+    ports:
+      - "27017:27017"
+    image: mongo:latest
+    volumes:
+      - 6156-mongo-data:/data/db
+  io:
+    name: 6156-io
+    build:
+      context: .
+      dockerfile: Dockerfile.io
+    ports:
+      - "3001:3001"
+  worker:
+    name: 6156-worker
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    environment:
+      - NODE_ENV=compose
+    depends_on:
+      mysql:
+        condition: service_healthy
+  app:
+    name: 6156-app
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    environment:
+      - NODE_ENV=compose
+    ports:
+      - "3000:3000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+volumes:
+  6156-mysql-data:
+  6156-mongo-data:
+
+
