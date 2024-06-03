@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:latest
-    name: 6156-mysql
+    container_name: mysql-compose
     ports:
       - "3310:3306"
     environment:
@@ -11,7 +11,7 @@ services:
       - MYSQL_DATABASE=cryptoapp
       - MYSQL_TCP_PORT=3306
     volumes:
-      - 6156-mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 1m30s
@@ -19,23 +19,23 @@ services:
       retries: 5
       start_period: 30s
   mongo:
-    name: 6156-mongo
+    container_name: mongo-compose
     environment:
       - MONGO_INITDB_DATABASE=cryptoapp
     ports:
       - "27017:27017"
     image: mongo:latest
     volumes:
-      - 6156-mongo-data:/data/db
+      - mongo-data:/data/db
   io:
-    name: 6156-io
+    container_name: io-compose
     build:
       context: .
       dockerfile: Dockerfile.io
     ports:
       - "3001:3001"
   worker:
-    name: 6156-worker
+    container_name: worker-compose
     build:
       context: .
       dockerfile: Dockerfile.worker
@@ -45,10 +45,10 @@ services:
       mysql:
         condition: service_healthy
   app:
-    name: 6156-app
+    container_name: app-compose
     build:
       context: .
-      dockerfile: Dockerfile.app
+      dockerfile: ./Dockerfile.app
     environment:
       - NODE_ENV=compose
     ports:
@@ -57,7 +57,7 @@ services:
       mysql:
         condition: service_healthy
 volumes:
-  6156-mysql-data:
-  6156-mongo-data:
+  mysql-data:
+  mongo-data:
 
 
