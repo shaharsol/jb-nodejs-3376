@@ -9,8 +9,8 @@ const getUsers = require('./middlewares/get-users')
 const filterUsers = require('./middlewares/filter-users')
 const formatResponse = require('./middlewares/format-response')
 
-const notFound = require('./middlewares/404')
-const error = require('./middlewares/error')
+const notFound = require('./middlewares/error/404')
+const error = require('./middlewares/error/error')
 
 // app.use(express.urlencoded({extended: false}));
 // app.use(express.json());

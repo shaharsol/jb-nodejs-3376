@@ -3,6 +3,7 @@ import mongoose from '../../db/mongo';
 import DTO from './dto';
 
 const symbolValueSchema = new mongoose.Schema<DTO>({
+     
     symbol: String,
     value: String,
     when: Date,

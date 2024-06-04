@@ -12,3 +12,11 @@ const howManyCandlesCallback = (dayNumber, callback) => {
     }, (Math.random() + 1 ) * 1000);
     
 };
+
+let sum = 0;
+for (i = 1; i < 9; i++) {
+    howManyCandlesCallback(i, (err, dayCandles) => {
+        sum += dayCandles;
+    })
+}
+console.log(sum)

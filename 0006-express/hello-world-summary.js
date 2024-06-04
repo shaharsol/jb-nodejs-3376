@@ -5,8 +5,8 @@ const axios = require('axios');
 const { toXML } = require('jstoxml');
 
 const auth = require('./middlewares/auth')
-const notFound = require('./middlewares/404')
-const error = require('./middlewares/error')
+const notFound = require('./middlewares/error/404')
+const error = require('./middlewares/error/error')
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
