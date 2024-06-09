@@ -2,6 +2,6 @@ function sum (a, b) {
     return a + b;
 }
 
-sum = 'a';
+// sum = 'a';
 
 console.log(sum(1, 2));
