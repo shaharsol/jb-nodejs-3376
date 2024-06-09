@@ -1,7 +1,8 @@
+import config from "config";
 import express from "express";
 
 const app = express();
 
-app.listen(3000, () => {
-    console.log('app started on http://localhost:3000')
+app.listen(config.get('app.port'), () => {
+    console.log(`app started on http://localhost:${config.get('app.port')}`)
 })
