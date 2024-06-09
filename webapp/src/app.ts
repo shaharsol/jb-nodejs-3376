@@ -4,6 +4,8 @@ import usersRouter from './routers/users'
 
 const app = express();
 
+
+
 app.use('/users', usersRouter);
 
 app.listen(config.get('app.port'), () => {
