@@ -6,7 +6,7 @@ const requestListener = function (req, res) {
 
     // log any incoming request
 
-    switch (req.url) {
+    switch (req.rurl) {
         case '/json':
 
             // connect to mysql
