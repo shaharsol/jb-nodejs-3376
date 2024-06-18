@@ -10,5 +10,10 @@
         "user": "root",
         "password": "",
         "database": "cryptoapp"
+    },
+    "mongo": {
+        "host": "localhost",
+        "port": 27017,
+        "database": "cryptoapp"
     }
 }
