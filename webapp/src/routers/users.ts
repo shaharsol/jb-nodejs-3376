@@ -8,6 +8,6 @@ const router = Router()
 router.use(urlencoded({extended: false}))
 
 router.get('/dashboard', dashboard)
-router.post('/symbols', validation(addSymbolValidator) , addSymbol)
+router.post('/symbols', validation(addSymbolValidator), addSymbol)
 
 export default router;
