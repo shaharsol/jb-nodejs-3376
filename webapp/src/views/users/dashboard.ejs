@@ -21,7 +21,7 @@
                 <tr>
                     <td><%= userSymbol.symbol %></td>
                     <td>
-                        $<%= symbolValues.find(symbolValue => symbolValue.symbol === userSymbol.symbol).value %>
+                        $<%= symbolValues.find(symbolValue => symbolValue?.symbol === userSymbol?.symbol)?.value %>
                     </td>
                 </tr>
             <% }) %>
