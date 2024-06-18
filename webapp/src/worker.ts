@@ -8,4 +8,4 @@ import { getModel } from "./models/symbol-value/factory";
     }
     const result = await getModel().add(symbolValue)
     console.log(result)
-})
+})()
