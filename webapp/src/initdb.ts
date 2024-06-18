@@ -30,7 +30,9 @@ const query = promisify(connection.query).bind(connection);
                 CONSTRAINT unique_user_id_symbol UNIQUE (user_id, symbol)
             ) 
         `)
-        console.log('created users_symbols table')
+        console.log('created users_symbols table');
+
+        connection.end()
 
     } catch (err) {
         console.error(err)
