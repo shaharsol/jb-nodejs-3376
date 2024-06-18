@@ -2,13 +2,13 @@ import { DTO } from "./dto";
 import { Model } from "./model";
 import mongoose from "../../db/mongo";
 
-const symbolValueSchema = new mongoose.Schema<DTO>({
+const symbolValueSchema = new mongoose.Schema({
     symbol: String,
-    value: Number,
+    value: String,
     when: Date
 });
 
-const SymbolValue = mongoose.model('symbol_values', symbolValueSchema);
+const SymbolValue = mongoose.model<DTO>('symbol_values', symbolValueSchema);
 
 class Mongo implements Model {
     async add(symbolValue: DTO): Promise<DTO> {
