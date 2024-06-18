@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
 export function errorLogger (err: any, req: Request, res: Response, next: NextFunction) {
-    console.log(err)
+    console.log('an error occured', err)
     next(err)
 }
