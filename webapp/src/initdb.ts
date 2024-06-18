@@ -21,6 +21,17 @@ const query = promisify(connection.query).bind(connection);
         `)
         console.log('created users table')
     
+        await query(`
+            CREATE TABLE IF NOT EXISTS users_symbols (
+                id int auto_increment,
+                user_id int not null,
+                symbol varchar(3) not null,
+                primary key (id),
+                CONSTRAINT unique_user_id_symbol UNIQUE (user_id, symbol)
+            ) 
+        `)
+        console.log('created users_symbols table')
+
     } catch (err) {
         console.error(err)
     }
