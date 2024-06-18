@@ -17,6 +17,6 @@
         "database": "cryptoapp"
     },
     "worker": {
-        "interval": 3000
+        "interval": 30000
     }
 }
