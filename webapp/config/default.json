@@ -15,5 +15,8 @@
         "host": "localhost",
         "port": 27017,
         "database": "cryptoapp"
+    },
+    "worker": {
+        "interval": 3000
     }
 }

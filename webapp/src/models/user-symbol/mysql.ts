@@ -4,6 +4,12 @@ import query from "../../db/mysql";
 import { OkPacketParams } from "mysql2";
 
 class MySQL implements Model {
+    async getDistinctSymbols(): Promise<{ symbol: string; }[]> {
+        const symbols = await query(`
+            SELECT DISTINCT symbol from users_symbols
+        `)
+        return symbols;
+    }
     async getForUser(userId: number): Promise<DTO[]> {
         const userSymbols = await query(`
             SELECT  id, user_id, symbol
