@@ -10,5 +10,22 @@
         <input type="text" name="symbol" placeholder="enter symbol...">
         <button>Add Symbol</button>
     </form>
+
+    <table>
+        <thead>
+            <th>symbol</th>
+            <th>value</th>
+        </thead>
+        <tbody>
+            <% userSymbols.forEach(userSymbol => { %>
+                <tr>
+                    <td><%= userSymbol.symbol %></td>
+                    <td>0</td>
+                </tr>
+            <% }) %>
+        </tbody>
+
+    </table>
+
 </body>
 </html>
