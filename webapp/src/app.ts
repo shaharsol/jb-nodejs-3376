@@ -5,6 +5,10 @@ import path from "path";
 import { notFound } from "./middlewares/not-found";
 import { errorLogger } from "./middlewares/error/errorLogger";
 import { errorHandler } from "./middlewares/error/errorHandler";
+import session from 'express-session'
+import auth from './middlewares/auth'
+
+declare 
 
 const app = express();
 
@@ -13,6 +17,16 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname, 'views'))
 
 // middlewares
+app.use(session({
+   secret: 'secret',
+   resave: false,
+   saveUninitialized: false,
+   cookie: {
+        maxAge: 1000 * 60 * 60 * 24
+   },
+}))
+app.use(auth.initialize())
+app.use(auth.session());
 
 // routing
 app.use('/users', usersRouter);

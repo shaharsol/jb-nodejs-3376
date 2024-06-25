@@ -7,6 +7,7 @@ import { DTO } from '../../models/user-symbol/dto';
 export async function addSymbol(req: Request, res: Response, next: NextFunction) {
 
     try {
+        req.user.
         const userSymbol = {
             userId: 1, // req.user.id // if(req.user)
             symbol: req.body.symbol as string
