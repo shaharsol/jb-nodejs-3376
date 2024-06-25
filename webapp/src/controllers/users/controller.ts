@@ -8,7 +8,7 @@ export async function addSymbol(req: Request, res: Response, next: NextFunction)
 
     try {
         const userSymbol = {
-            userId: 1,
+            userId: 1, // req.user.id // if(req.user)
             symbol: req.body.symbol as string
         }
         const newUserSymbol = await getUserSymbolModel().add(userSymbol)
