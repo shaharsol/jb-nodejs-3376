@@ -25,5 +25,10 @@
     },
     "io": {
         "port": 3001
+    },
+    "github": {
+        "clientID": "Ov23li6tBXc2JIXPyP3D",
+        "clientSecret": "dac6d12ce7c0e295be343f3fac7752cd13575feb",
+        "callbackURL": "http://localhost:3000/github/callback"
     }
 }
