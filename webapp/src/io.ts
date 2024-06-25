@@ -29,6 +29,11 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('client disconnected')
     })
+
+    socket.on('new symbol value', data => {
+        console.log('received data from worker', data)
+        io.emit('new symbol value', data)
+    })
 })
 
 io.listen(config.get('io.port'));

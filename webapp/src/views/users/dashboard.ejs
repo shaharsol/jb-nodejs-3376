@@ -16,6 +16,10 @@
         socket.on('new user', (data) => {
             console.log(`connected users: ${data.count}`)
         })
+
+        socket.on('new symbol value', data => {
+            document.getElementById(data.symbol).innerText = `$${data.value}`
+        })
     </script>
 </head>
 <body>
@@ -33,7 +37,7 @@
             <% userSymbols.forEach(userSymbol => { %>
                 <tr>
                     <td><%= userSymbol.symbol %></td>
-                    <td>
+                    <td id="<%= userSymbol.symbol %>">
                         $<%= symbolValues.find(symbolValue => symbolValue?.symbol === userSymbol?.symbol)?.value %>
                     </td>
                 </tr>
