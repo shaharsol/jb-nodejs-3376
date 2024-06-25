@@ -2,6 +2,7 @@ import config from "config";
 import express from "express";
 import usersRouter from './routers/users'
 import guestsRouter from './routers/guests'
+import githubRouter from './routers/github'
 import path from "path";
 import { notFound } from "./middlewares/not-found";
 import { errorLogger } from "./middlewares/error/errorLogger";
@@ -38,6 +39,7 @@ app.use(auth.session());
 // routing
 app.use('/users', usersRouter);
 app.use('/guests', guestsRouter);
+app.use('/github', githubRouter);
 
 
 
