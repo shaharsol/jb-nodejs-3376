@@ -8,7 +8,13 @@ import { errorHandler } from "./middlewares/error/errorHandler";
 import session from 'express-session'
 import auth from './middlewares/auth'
 
-declare 
+declare global {
+    namespace Express {
+        interface User {
+            id: number;
+        }
+    }
+}
 
 const app = express();
 

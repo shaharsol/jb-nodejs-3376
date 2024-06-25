@@ -7,9 +7,8 @@ import { DTO } from '../../models/user-symbol/dto';
 export async function addSymbol(req: Request, res: Response, next: NextFunction) {
 
     try {
-        req.user.
         const userSymbol = {
-            userId: 1, // req.user.id // if(req.user)
+            userId: req.user.id, // req.user.id // if(req.user)
             symbol: req.body.symbol as string
         }
         const newUserSymbol = await getUserSymbolModel().add(userSymbol)
@@ -23,7 +22,7 @@ export async function addSymbol(req: Request, res: Response, next: NextFunction)
 
 export async function dashboard(req: Request, res: Response, next: NextFunction) {
     try {
-        const userSymbols = await getUserSymbolModel().getForUser(1);
+        const userSymbols = await getUserSymbolModel().getForUser(req.user.id);
 
         const symbolValues = await Promise.all(userSymbols.map(({symbol}) => getSymbolValueModel().getLatest(symbol)))
 
