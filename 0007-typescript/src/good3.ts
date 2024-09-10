@@ -1,4 +1,4 @@
-const sub = (a, b): number => {
+const sub = (a: number, b: number): number => {
     const result = a - b;
     return result;
 }
