@@ -9,3 +9,16 @@ const howManyCandlesCallback = (dayNumber, callback) => {
 
     return callback ( null, dayNumber + 1 );
 }
+
+// let sum = 0;
+// for (let i = 1; i <= 8; i++) {
+//     howManyCandlesCallback(i, (err, result) => {
+//         if(err) {
+//             console.log(err)
+//         } else {
+//             sum += result
+//         }
+//     })
+// }
+// console.log(sum)
+
