@@ -5,9 +5,13 @@ const server = express();
 const logRequestToFile = (req, res, next) => { console.log('logging request to file'); next() }
 const connectToMongo = (req, res, next) => { 
     console.log('connecting to mongo'); 
-    const mongoConnection = 'mongoConnection'
-    req.mongoConnection = mongoConnection
-    next() 
+
+    console.log('error connecting to mongo...')
+    next('error connecting to mongo...')
+
+    // const mongoConnection = 'mongoConnection'
+    // req.mongoConnection = mongoConnection
+    // next() 
 }
 const respondWithJson = (req, res, next) => { 
     console.log(`i got a mongo connection: ${req.mongoConnection}`)
@@ -31,6 +35,18 @@ const auth = (req, res, next) => {
         res.status(401).send('you are not authorized')
     }
 }
+const logError = (err, req, res, next) => {
+    console.error(err)
+    next(err)
+}
+const trueSite = (err, req, res, next) => {
+    console.log('messaged the IT team')
+    next(err)
+}
+const errorHandler = (err, req, res, next) => {
+    res.status(500).send(err)
+}
+
 
 server.use(logRequestToFile)
 server.use(auth)
@@ -48,6 +64,10 @@ server.use('/csv', disconnectFromMysql)
 server.use(logResponseStatus)
 server.use(closeTheResponse)
 server.use(respond404)
+
+server.use(logError)
+server.use(trueSite)
+server.use(errorHandler)
 
 server.listen(8080, () => {
     console.log('express server started on http://localhost:8080')
