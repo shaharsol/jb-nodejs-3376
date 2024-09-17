@@ -7,8 +7,14 @@ const object = { company: 'Migdal'}
 const csv = 'firstname,lastname,age\nshahar,solomianik,49\nisrael,israeli,33'
 
 const requestListener = function (req, res) {
+
+    // log request to some log file
+
     switch (req.url) {
         case '/json':
+
+            // connect mongodb
+
             switch(req.method) {
                 case 'GET':
                     res.setHeader('Content-Type', 'application/json')
@@ -20,11 +26,17 @@ const requestListener = function (req, res) {
                     res.end('saving json')
                     break;
                 default:
-                    res.writeHead(404);
+                    res.writeHead(405);
                     res.end()
             }
+
+            // diconnect from mongo
+
             break;
         case '/csv':
+
+            // connect mysql
+
             switch (req.method) {
                 case 'GET':
                     res.setHeader('Content-Type', 'text/csv')
@@ -37,14 +49,19 @@ const requestListener = function (req, res) {
                     res.end('saving csv')
                     break;
                 default:
-                        res.writeHead(404);
-                        res.end()
+                    res.writeHead(405);
+                    res.end()
             }
+
+            // disconnect mysql
+
             break;
         default:
             res.writeHead(404);
             res.end();
     }
+
+    // log the response status to some log file
 };
 
 const server = createServer(requestListener);
