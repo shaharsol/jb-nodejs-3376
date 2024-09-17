@@ -28,3 +28,4 @@ class ActualImplementation extends Implementation {
 }
 
 const instance = new ActualImplementation('hello world');
+export default instance;
