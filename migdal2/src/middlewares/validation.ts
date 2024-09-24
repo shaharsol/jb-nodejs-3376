@@ -7,7 +7,10 @@ export default function validation(validator: ObjectSchema) {
             req.body = await validator.validateAsync(req.body)
             next()
         } catch (e) {
-            next(e)
+            next({
+                status: 422,
+                message: e
+            })
         }
     }
 }
