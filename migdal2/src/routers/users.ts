@@ -1,10 +1,9 @@
 import { Router, Request, Response } from "express";
+import { dashboard } from "../controllers/users/users";
 
 const router = Router()
 
-router.get('/dashboard', (req: Request, res: Response, next) => {
-    res.render('users/dashboard')
-})
+router.get('/dashboard', dashboard)
 
 export default router
 
