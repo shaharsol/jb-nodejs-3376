@@ -4,6 +4,13 @@ import { DTO } from "./dto";
 import { Model } from "./model";
 
 class MySql implements Model {
+    async getUnique(): Promise<{symbol: string}[]> {
+        const symbols = await query(`
+            select distinct symbol from users_symbols
+        `)
+        return symbols
+    }
+    
     async getForUser(userId: number): Promise<DTO[]> {
         const usersSymbols: DTO[] = await query(`
             SELECT id, user_id, symbol
