@@ -5,23 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx ts-node src/initdb && npx nodemon --exec ts-node src/app.ts"
+    "start": "npx ts-node src/initdb && npx nodemon --exec ts-node src/app.ts",
+    "worker": "npx ts-node src/worker.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
     "config": "^3.3.12",
     "express": "^4.21.0",
     "joi": "^17.13.3",
+    "mongoose": "^8.7.0",
     "mysql2": "^3.11.3"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/cheerio": "^0.22.35",
     "@types/config": "^3.3.5",
     "@types/express": "^4.17.21",
     "@types/joi": "^17.2.3",
+    "@types/mongoose": "^5.11.97",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2"

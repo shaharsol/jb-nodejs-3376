@@ -6,3 +6,10 @@ class MyClass {
     }
 }
 
+function doSomethingAsync () {
+    if (cachedValue) {
+        return Promise.resolve(cachedValue)
+    } else {
+        return axios.get('http://yahoo.com')
+    }
+}
