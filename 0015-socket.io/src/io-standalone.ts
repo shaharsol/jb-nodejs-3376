@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
     pool: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   });
   console.log(`a user connected: ${id}`);
-  socket.emit('welcome',{id})
+  socket.emit('welcome', {id})
   io.emit('new user joined',{id});
   socket.on('disconnect', () => {
     console.log('user disconnected');
