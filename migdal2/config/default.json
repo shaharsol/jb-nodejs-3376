@@ -1,6 +1,6 @@
 {
     "app": {
-        "port": 8080,
+        "port": 3000,
         "io": {
             "host": "localhost",
             "port": 3033
@@ -27,5 +27,10 @@
     },
     "io": {
         "port": 3033
+    },
+    "github": {
+        "clientID": "Ov23li3aVeDhV23EJ11w",
+        "callbackURL": "http://localhost:3000/github/callback",
+        "clientSecret": ""
     }
 }
