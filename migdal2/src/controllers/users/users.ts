@@ -15,7 +15,13 @@ export async function dashboard(req: Request, res: Response, next: NextFunction)
     })
 }
 
+export async function welcome(req: Request, res: Response, next: NextFunction) {
+    res.render('users/welcome', {})
+}
+
 export async function addSymbol(req: Request, res: Response, next: NextFunction) {
+
+    req.user
     const { symbol } = req.body
     
     const userSymbolData = {
