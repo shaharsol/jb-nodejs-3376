@@ -16,6 +16,8 @@
         const socket = io('ws://<%= config.get("app.io.host") %>:<%= config.get("app.io.port")%>')
         socket.on('new-symbol-value-from-io-server', (data) => {
             console.log(data)
+            const { symbol, value } = data;
+            document.getElementById(`${symbol}-value`).innerHTML = `$${value}`
         })
     </script>
 </head>
@@ -38,7 +40,7 @@
             <% userSymbols.forEach(userSymbol => { %>
                 <tr>
                     <td><%= userSymbol.symbol %></td>
-                    <td><%= symbolValues.find(sv => sv?.symbol === userSymbol.symbol)?.value  %></td>
+                    <td id="<%= userSymbol.symbol %>-value">$<%= symbolValues.find(sv => sv?.symbol === userSymbol.symbol)?.value  %></td>
                 </tr>
             <% }) %>
         </tbody>
