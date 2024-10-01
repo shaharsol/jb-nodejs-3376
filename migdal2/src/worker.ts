@@ -3,6 +3,9 @@ import getUserSymbolModel from './models/user-symbol/factory'
 import getSymbolValueModel from './models/symbol-value/factory'
 import axios from 'axios'
 import * as cheerio from 'cheerio';
+import { io } from 'socket.io-client'
+
+const socket = io(`ws://${config.get<string>('worker.io.host')}:${config.get<string>('worker.io.port')}`)
 
 async function scrapeSymbolValue(symbol: string): Promise<void> {
     const url = `https://www.google.com/finance/quote/${symbol}-USD`
@@ -15,11 +18,15 @@ async function scrapeSymbolValue(symbol: string): Promise<void> {
     console.log(`value of ${symbol} is ${value}`)
     
     const createdAt = new Date()
-    await getSymbolValueModel().add({
+    const newSymbolValue = await getSymbolValueModel().add({
         symbol,
         value,
         createdAt
     })
+
+    // now emit to the socket server
+    socket.emit('new-symbol-value-from-worker', newSymbolValue)
+
     console.log(`saved ${symbol} record in mongo`)
 
 }

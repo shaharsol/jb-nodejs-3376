@@ -1,6 +1,10 @@
 {
     "app": {
-        "port": 8080
+        "port": 8080,
+        "io": {
+            "host": "localhost",
+            "port": 3033
+        }
     },
     "mysql": {
         "host": "localhost",
@@ -15,6 +19,13 @@
         "database": "cryptoapp"
     },
     "worker": {
-        "interval": 15000
+        "interval": 15000,
+        "io": {
+            "host": "localhost",
+            "port": 3033
+        }
+    },
+    "io": {
+        "port": 3033
     }
 }
