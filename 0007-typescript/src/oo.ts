@@ -1,30 +1,33 @@
-interface publicActions {
-    sum(a: number, b: number): number;
-    log(message: string): void;
-    returnFunction(): Function;
+interface Breathing {
+    inhale(volume: number): void;
+    exhale(): number;
+    holdBreathing(): Function;
 }
 
-abstract class Implementation implements publicActions{
+abstract class Animal implements Breathing{
 
-    public constructor(public someMember: string) {}
+    public constructor(public weight: number) {}
 
-    sum(a: number, b: number): number {
-        return a + b;
+    inhale(volume: number): void {
+        // inhale
     }
-    log(message: string): void {
-        console.log( message + this.someMember);
+    exhale(): number {
+        // exhale co2 volume
+        return 42
     }
-    returnFunction(): Function {
-        return () => {}
+    holdBreathing(): Function {
+        return () => {
+            // start breathing
+        }
     }
 
-    abstract implement(param1: string, param2: number): publicActions;
+    abstract digest(calories: number): void;
 }
 
-class ActualImplementation extends Implementation {
-    implement(param1: string, param2: number) {
-        return this;
+class Bear extends Animal {
+    digest(calories: number): void {
+        // digest as bear does
     }
 }
 
-const instance = new ActualImplementation('hello world');
+const poo = new Bear(30);
