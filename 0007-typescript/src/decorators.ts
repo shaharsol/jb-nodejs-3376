@@ -40,6 +40,7 @@ class Creature {
 
 @Mamal
 class Lion extends Creature {
+    
     @Min(20)
     weight: number;
 
@@ -71,7 +72,7 @@ try {
     console.error(error.message);
 }
 
-(lion as any).birthdate && console.log("Lion's birthdate:", (lion as any).birthdate);
+console.log(`Lion's birthdate is ${(lion as any).birthdate}`);
 
 const babyLion = (lion as any).giveBirth();
 console.log("Baby lion born:", babyLion);
