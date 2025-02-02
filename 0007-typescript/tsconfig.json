@@ -3,8 +3,8 @@
         "target": "ES2017",
         "outDir": "dist",
         // "noEmitOnError": true,
-        // "moduleResolution": "Node",
-        // "module": "CommonJS",
+        "moduleResolution": "Node",
+        "module": "CommonJS",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
 

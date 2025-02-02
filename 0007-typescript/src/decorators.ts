@@ -1,8 +1,8 @@
 function Mamal(target: any): any {
     return class extends target {
         birthdate: Date = new Date()
-        giveBirth(): Lion {
-            return new Lion()
+        giveBirth(weight: number): typeof target {
+            return new target(weight)
         }
     }
 }
@@ -61,9 +61,9 @@ class Lion extends Creature {
     // @Max(100)
     weight: number;
 
-    constructor() {
+    constructor(weight: number) {
         super()
-        this.weight = 20; // Default value
+        this.weight = weight;
     }
 
     @Logger
@@ -73,7 +73,7 @@ class Lion extends Creature {
 }
 
 // Test the Lion class
-const lion = new Lion();
+const lion = new Lion(20);
 lion.sayHello(); // Logs "sayHello invoked", then "Saying hello..."
 
 try {
@@ -91,5 +91,5 @@ try {
 
 console.log(`Lion's birthdate is ${(lion as any).birthdate}`);
 
-const babyLion = (lion as any).giveBirth();
+const babyLion = (lion as any).giveBirth(30);
 console.log("Baby lion born:", babyLion);
