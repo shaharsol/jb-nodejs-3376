@@ -104,7 +104,11 @@ const howManyCandles = (dayNumber) => {
 //     const dayFourResult = await howManyCandles(4)
 //     console.log(dayFourResult)    
 // })()
+
+const reducer = (cummulative, current) => cummulative + current;
 (async () => {
-    const result = await Promise.all([1, 2, 3, 4, 5, 6, 7, 8].map(i => howManyCandles(i)))
+    // console.log([1, 2, 3, 4, 5, 6, 7, 8].map(i => howManyCandles(i)))
+    const result = (await Promise.all([1, 2, 3, 4, 5, 6, 7, 8].map(i => howManyCandles(i))))
+        .reduce(reducer, 0)
     console.log(result)
 })()

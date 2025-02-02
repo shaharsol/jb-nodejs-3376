@@ -13,5 +13,5 @@ interface Product {
 (async() => {
     const response = await axios.get<Product[]>('https://jsonplaceholder.typicode.com/users?_limit=2');
     const products: Product[] = response.data;
-    console.log(products[0].price.usd);
+    console.log(products[0].price?.usd);
 })();

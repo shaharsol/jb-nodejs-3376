@@ -6,7 +6,8 @@ interface Breathing {
 
 abstract class Animal implements Breathing{
 
-    public constructor(public weight: number) {}
+    public constructor(public weight: number, public name: string) {
+    }
 
     inhale(volume: number): void {
         // inhale
@@ -30,4 +31,5 @@ class Bear extends Animal {
     }
 }
 
-const poo = new Bear(30);
+const poo = new Bear(30, 'poo');
+console.log(poo.weight)

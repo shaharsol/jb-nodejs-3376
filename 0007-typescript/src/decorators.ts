@@ -24,8 +24,24 @@ function Min(value: number) {
     };
 }
 
+function Max(value: number) {
+    return function (target: any, propertyKey: string) {
+        let _value: number;
+
+        Object.defineProperty(target, propertyKey, {
+            get: () => _value,
+            set: (newValue: number) => {
+                if (newValue > value) {
+                    throw new Error(`${propertyKey} cannot be more than ${value}`);
+                }
+                _value = newValue;
+            },
+        });
+    };
+}
+
 // Method Decorator
-function Log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+function Logger(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
@@ -42,6 +58,7 @@ class Creature {
 class Lion extends Creature {
     
     @Min(20)
+    // @Max(100)
     weight: number;
 
     constructor() {
@@ -49,7 +66,7 @@ class Lion extends Creature {
         this.weight = 20; // Default value
     }
 
-    @Log
+    @Logger
     sayHello() {
         console.log("Saying hello...");
     }

@@ -1,40 +1,23 @@
-const database = {
-    products: [
-        {
-            id: 1,
-            name: 'laptop',
-            price: 1000
-        }
-    ],
-    employees: [
-        {
-            id: 2,
-            name: 'Maynard',
-            salary: 10000
-        }
-    ]
+function clone<T>(obj: T): T {
+    return {...obj}
+}
+// function clone(obj: any) {
+//     return {...obj}
+// }
+
+function c<T>(dog: T): T {
+    return {...dog} 
 }
 
-interface Product {
-    id: number;
-    name: string;
-    price: number;
+interface Dog {
+    name: string,
+    age: number
+}
+const dog: Dog = {
+    name: 'toy',
+    age: 3
 }
 
-interface Employee {
-    id: number;
-    name: string;
-    salary: number;
-}
 
-function getFromDatabase<T>(id: number): T | undefined{
-    const product = database.products.find(product => product.id === id);
-    if(product) return product as T;
-    const employee = database.employees.find(employee => employee.id === id);
-    if(employee) return employee as T;
-    return undefined;
-}
 
-const employee = getFromDatabase<Employee>(2)
-console.log(employee);
-
+const twin = clone(dog)
